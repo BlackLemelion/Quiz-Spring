@@ -13,9 +13,5 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MajorRequest {
-    private String id;
     private String name;
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 }
