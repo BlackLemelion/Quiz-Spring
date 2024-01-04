@@ -1,11 +1,22 @@
 package com.este.quiz.app.questions;
 
 import com.este.quiz.app.responses.Response;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "questions")
 public class Question {
     @Id
@@ -13,37 +24,10 @@ public class Question {
     private String name;
     private String description;
     private List<Response> responses;
+    @CreatedDate
+    private LocalDateTime createdAt;
 
-    public Question(String name, String description, List<Response> responses) {
-        this.name = name;
-        this.description = description;
-        this.responses = responses;
-    }
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
-    public Question() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Response> getResponses() {
-        return responses;
-    }
-
-    public void setResponses(List<Response> responses) {
-        this.responses = responses;
-    }
 }
